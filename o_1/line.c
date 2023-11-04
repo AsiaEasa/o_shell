@@ -9,11 +9,12 @@ char *get_line(void)
 {
 	char *line;
 	size_t buffersize;
-
+	ssize_t get;
 	buffersize = 0;
 	line = NULL;
+	get = getline(&line, &buffersize, stdin);
 
-	if (getline(&line, &buffersize, stdin) == -1) /* if getline fails */
+	if (get == -1) /* if getline fails */
 	{
 		if (feof(stdin)) /* test for the eof */
 		{
@@ -28,5 +29,9 @@ char *get_line(void)
 		}
 	}
 
+	if (line[get - 1] == '\n') {
+
+		line[get - 1] = '\0';
+	}
 	return (line);
 }
