@@ -34,10 +34,10 @@ char **split(char *line)
 			token = t;
 			t = &str[j];
 		}
-		if (str[j+1] == '#')
-		{ 	given_tokens[i++] = token;
-			given_tokens[i] = NULL;
-			break;
+		if (token[0] == '#')
+		{ 
+		given_tokens[i] = NULL;
+		return (given_tokens);
 		}
 		t++;
 		j++;
