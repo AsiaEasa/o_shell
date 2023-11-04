@@ -8,12 +8,13 @@
  */
 char **split(char *line)
 {
-	int buffersize, j;
+	int buffersize, j, i;
 	char **given_tokens;
-	char *token;
+	char *token, *t, str[BUFFER_SIZE];
 
-	buffersize = 64;
+	buffersize = 1024;
 	j = 0;
+	i = 0;
 	given_tokens = malloc(buffersize * sizeof(char *));
 
 	if (!given_tokens)
@@ -21,28 +22,50 @@ char **split(char *line)
 		_puts("allocation error in split_line: tokensi\n");
 		exit(EXIT_FAILURE);
 	}
-	token = strtok(line, EXPECTED_DELIM);
-	while (token != NULL)
-	{
-		/* handle comments */
-		if (token[0] == '#')
+	_strcpy(str,line);
+	token = str;
+	t = str;
+	while (str[j] != '\0')
+	{if (str[j] == ' ')
 		{
-			break;
-		}
-		given_tokens[j] = token;
-		j++;
-		if (j >= buffersize)
-		{
-			buffersize += buffersize;
-			given_tokens = realloc(given_tokens, buffersize * sizeof(char *));
-			if (!given_tokens)
-			{
-				_puts("reallocation error in split_line: tokens\n");
-				exit(EXIT_FAILURE);
+			str[j] = '\0';
+			given_tokens[i++] = token;
+			t++;
+			token = t;
+			t = &str[j];
+
+			if (str[j+1] == '#')
+			{ 	given_tokens[i++] = token;
+				given_tokens[i] = NULL;
+				break;
 			}
 		}
-		token = strtok(NULL, EXPECTED_DELIM);
+		t++;
+		j++;
 	}
-	given_tokens[j] = NULL;
+	given_tokens[i++] = token;
+	given_tokens[i] = NULL;
 	return (given_tokens);
+}
+/**
+ * char *_strcpy - a function that copies the string pointed to by src
+ * @dest: copy to
+ * @src: copy from
+ * Return: string
+ */
+char *_strcpy(char *dest, char *src)
+{
+	int l = 0;
+	int x = 0;
+
+	while (*(src + l) != '\0')
+	{
+		l++;
+	}
+	for ( ; x < l ; x++)
+	{
+		dest[x] = src[x];
+	}
+	dest[l] = '\0';
+	return (dest);
 }

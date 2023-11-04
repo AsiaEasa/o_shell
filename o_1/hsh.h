@@ -8,7 +8,7 @@
 #include <sys/wait.h>
 
 #define EXPECTED_DELIM " \t\r\n\a\\"
-
+#define BUFFER_SIZE 1024
 
 /*stringHandlingPart*/
 int _putchar(char c);
@@ -16,6 +16,7 @@ void _puts(char *str);
 int _strlen(char *s);
 int _strcmp(char *s1, char *s2);
 int _strncmp(char *str1, char *str2, int n);
+char *_strcpy(char *dest, char *src);
 
 /* shellLOOP.c */
 void interactive(void);
