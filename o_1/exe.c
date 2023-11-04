@@ -14,7 +14,7 @@ int exec_arg(char **arg)
 		return (-1);
 	}
 	/* if there is a match execute the builtin command */
-	
+
 	if(_strncmp(arg[0], "exit", 4) == 0)
 		return(own_exit(arg));
 
