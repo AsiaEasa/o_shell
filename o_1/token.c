@@ -6,11 +6,11 @@
  *
  * Return: pointer that points to the new array
  */
-char **split(char *line)
+char **split(char str[BUFFER_SIZE])
 {
 	int buffersize, j, i;
 	char **given_tokens;
-	char *token, *t, str[BUFFER_SIZE];
+	char *token, *t;
 
 	buffersize = 1024;
 	j = 0;
@@ -22,7 +22,7 @@ char **split(char *line)
 		_puts("allocation error in split_line: tokensi\n");
 		exit(EXIT_FAILURE);
 	}
-	_strcpy(str,line);
+
 	token = str;
 	t = str;
 	while (str[j] != '\0')

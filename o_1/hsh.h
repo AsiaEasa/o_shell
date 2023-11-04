@@ -24,7 +24,7 @@ void none_interactive(void);
 
 /* interactive.c */
 char *read_line(void);
-char **split(char *line);
+char  **split(char str[BUFFER_SIZE]);
 int exec_arg(char **arg);
 
 /* exec_args */
