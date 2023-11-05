@@ -13,7 +13,7 @@ void none_interactive(void)
 	int stat = -1;
 
 	do {
-		line = get_line();
+		line = read_line();
 		arg = split(line); /* tokenize line */
 		stat = exec_arg(arg);
 		/* avoid memory leaks */
