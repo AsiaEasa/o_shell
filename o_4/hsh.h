@@ -37,5 +37,9 @@ char *get_line(void);
 int env(char **arg);
 extern char **environ;
 /*exit.c*/
-int own_exit(char **args);
+int own_exit(char **exit_args);
+int _atoi(char *s);
+void error_exit(char *arg_v);
+void reverse(char str[], int length);
+char *my_itoa(int num, char str[], int base);
 #endif
