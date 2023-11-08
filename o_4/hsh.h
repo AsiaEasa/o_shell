@@ -42,4 +42,6 @@ int _atoi(char *s);
 void error_exit(char *arg_v);
 void reverse(char str[], int length);
 char *my_itoa(int num, char str[], int base);
+void ch_er(char *arg_v);
+int cd(char **arg);
 #endif
