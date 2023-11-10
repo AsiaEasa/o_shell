@@ -1,5 +1,20 @@
 #include "hsh.h"
+/**
+ * _strlen - returns the length of a string
+ * @s: string
+ * Return: length
+ */
+int _strlen(char *s)
+{
+	int longi = 0;
 
+	while (*s != '\0')
+	{
+		longi++;
+		s++;
+	}
+	return (longi);
+}
 /**
  * _putchar - writes the character c to stdout
  * @c: The character to print
@@ -47,46 +62,24 @@ void _puts(char *str)
 		_putchar(str[i]);
 	}
 }
-
 /**
- * _strcmp - function that compares two strings
- *
- * @s1: char pointer variable
- * @s2: char pointer variable
- *
- * Return: an integer for the exit status
+ * _strcmp - compare string values
+ * @s1: input value
+ * @s2: input value
+ * Return: s1[i] - s2[i]
  */
-
 int _strcmp(char *s1, char *s2)
 {
 	int i;
 
-	for (i = 0; s1[i] != '\0' || s2[i] != '\0'; i++)
+	i = 0;
+	while (s1[i] != '\0' && s2[i] != '\0')
 	{
 		if (s1[i] != s2[i])
 		{
 			return (s1[i] - s2[i]);
 		}
+		i++;
 	}
-
 	return (0);
-}
-
-/**
- * _strlen - A function to return the length of a string
- *
- * @s: input character
- *
- * Return: int length of a string
- */
-
-int _strlen(char *s)
-{
-	int cnu;
-
-	for (cnu = 0 ; *s != '\0' ; s++)
-	{
-		++cnu;
-	}
-	return (cnu);
 }

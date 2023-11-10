@@ -1,10 +1,8 @@
 #include "hsh.h"
-
 /**
- * exec_arg - map if command is a builtin or a process
- * @arg: command and its flags
- *
- * Return: 1 on sucess, 0 otherwise
+ * check - to check what is the input
+ * @arg: array of command
+ * Return: exit
  */
 int check(char **arg)
 {
