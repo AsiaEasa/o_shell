@@ -20,6 +20,7 @@ char *_strcpy(char *dest, char *src);
 char *my_itoa(int num, char str[], int base);
 void reverse(char str[], int length);
 void ch_er(char *arg_v);
+int _atoi(char *s);
 
 /* shellLOOP.c */
 void interactive(void);
@@ -40,7 +41,10 @@ char *get_line(void);
 int env(char **arg);
 extern char **environ;
 /*exit.c*/
-int own_exit(char **args);
+int handle_exit(char **args);
+void error_exit(char *arg_v);
 
 int cd(char **arg);
+int envi(void);
+void print_env(char *str);
 #endif

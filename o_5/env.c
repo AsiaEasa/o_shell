@@ -1,21 +1,33 @@
 #include "hsh.h"
 
 /**
- * env - function that prints enviroment variables
- * @arg: arguments
- *
- * Return: 1 on success, 0 otherwise
+ * envi -handles the env built-in command
+ *Return: Nothing
  */
-int env(char **arg)
-{
-	int k = 0;
-	(void)(**arg);
 
-	while (environ[k])
+int envi(void)
+{ char **ptr;
+
+	ptr = environ;
+
+		while (*ptr)
+		{
+			print_env(*ptr);
+			print_env("\n");
+			ptr++; }
+		return (-1);  }
+
+/**
+ * print_env - print all environmen
+ * @str: point to environment
+ * Return: Nothing.
+ */
+
+void print_env(char *str)
+{
+	while (*str)
 	{
-		write(STDOUT_FILENO, environ[k], _strlen(environ[k]));
-		write(STDOUT_FILENO, "\n", 1);
-		k++;
+		write(1, str, 1);
+		str++;
 	}
-	return (-1);
-}
+} 
