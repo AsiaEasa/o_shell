@@ -1,48 +1,36 @@
 #include "hsh.h"
 
 /**
- * split - split a string into multiple strings
- * @line: string to be splited
- *
- * Return: pointer that points to the new array
+ * str_tok - a function that spilt the string
+ * @line: command input
+ * Return: string
  */
-char **split(char *line)
+
+char **str_tok(char *line)
 {
-	int buffersize, j;
-	char **given_tokens;
+	int j;
+	char **str;
 	char *token;
 
-	buffersize = 64;
 	j = 0;
-	given_tokens = malloc(buffersize * sizeof(char *));
+	str = malloc(BUFFER_SIZE * sizeof(char *));
 
-	if (!given_tokens)
+	if (!str)
 	{
-		_puts("allocation error in split_line: tokensi\n");
+		write(1, "error in malloc\n", 16);
 		exit(EXIT_FAILURE);
 	}
-	token = strtok(line, EXPECTED_DELIM);
+	token = strtok(line, " ");
 	while (token != NULL)
 	{
-		/* handle comments */
 		if (token[0] == '#')
 		{
 			break;
 		}
-		given_tokens[j] = token;
+	str[j] = token;
 		j++;
-		if (j >= buffersize)
-		{
-			buffersize += buffersize;
-			given_tokens = realloc(given_tokens, buffersize * sizeof(char *));
-			if (!given_tokens)
-			{
-				_puts("reallocation error in split_line: tokens\n");
-				exit(EXIT_FAILURE);
-			}
-		}
-		token = strtok(NULL, EXPECTED_DELIM);
+		token = strtok(NULL, " ");
 	}
-	given_tokens[j] = NULL;
-	return (given_tokens);
+	str[j] = NULL;
+	return (str);
 }

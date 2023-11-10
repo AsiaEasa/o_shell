@@ -10,19 +10,19 @@ void none_interactive(void)
 	char *line;
 	char **arg;
 
-	int stat = -1;
+	int re = -1;
 
-	do {
-		line = read_line();
-		arg = split(line); /* tokenize line */
-		stat = exec_arg(arg);
-		/* avoid memory leaks */
+	while (re == -1)
+	{
+		line = _read();
+		arg = str_tok(line);
+		re = check(arg);
+		
 		free(line);
 		free(arg);
-		/* exit with status */
-		if (stat >= 0)
+		
+		if (re >= 0)
 		{
-			exit(stat);
+			exit(re);
 		}
-	} while (stat == -1);
-}
+	}}

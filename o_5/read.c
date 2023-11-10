@@ -5,7 +5,7 @@
  *
  * Return: pointer that points the the read line
  */
-char *read_line(void)
+char *_read(void)
 {
 	int j, ch, buffersize;
 	char *line;

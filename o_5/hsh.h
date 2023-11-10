@@ -17,16 +17,19 @@ int _strlen(char *s);
 int _strcmp(char *s1, char *s2);
 int _strncmp(char *str1, char *str2, int n);
 char *_strcpy(char *dest, char *src);
+char *my_itoa(int num, char str[], int base);
+void reverse(char str[], int length);
+void ch_er(char *arg_v);
 
 /* shellLOOP.c */
 void interactive(void);
 void none_interactive(void);
 
 /* interactive.c */
-char *read_line(void);
-char  **split(char *line);
-int exec_arg(char **arg);
-
+char *_read(void);
+char **str_tok(char *line);
+int check(char **arg);
+char *in_env(char *in_env);
 /* exec_args */
 int create_process(char **args);
 
@@ -38,4 +41,6 @@ int env(char **arg);
 extern char **environ;
 /*exit.c*/
 int own_exit(char **args);
+
+int cd(char **arg);
 #endif

@@ -7,24 +7,23 @@
  */
 void interactive(void)
 {
-	char *line;
+	char *line, *prompt;
 	char **arg;
-	int stat;
+	int re;
 
-	stat = -1;
+	re = -1;
+	prompt = "$ ";
+	while (re == -1){
+		write(STDOUT_FILENO, prompt, 2);
+		line = get_line();
+		arg = str_tok(line);
+		re = check(arg);
 
-	do {
-		_puts("$ ");
-		line = get_line(); /* read line from stdin */
-		arg = split(line); /* tokenize line */
-		stat = exec_arg(arg);
-		/* avoid memory leaks */
 		free(line);
 		free(arg);
-		/* exit with status */
-		if (stat >= 0)
+
+		if (re >= 0)
 		{
-			exit(stat);
+			exit(re);
 		}
-	} while (stat == -1);
-}
+	}}
