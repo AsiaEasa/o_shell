@@ -20,5 +20,5 @@ int check(char **arg)
 	if (_strncmp(arg[0], "cd", 2) == 0)
 		return(cd(arg));
 
-	return (create_process(arg));
+	return (my_fork(arg));
 }

@@ -32,7 +32,8 @@ char **str_tok(char *line);
 int check(char **arg);
 char *in_env(char *in_env);
 /* exec_args */
-int create_process(char **args);
+int my_fork(char **arg);
+void error(char *arg_v);
 
 /* not_interactive */
 char *get_line(void);
